@@ -52,6 +52,8 @@ class SettingState(
     val lightThemeNameUserData = userDataRepository.stringUserData(UserDataPath.Settings.Display.LightThemeName.path)
     val darkThemeNameUserData = userDataRepository.stringUserData(UserDataPath.Settings.Display.DarkThemeName.path)
     val backBlockModeUserData = userDataRepository.stringUserData(UserDataPath.Reader.BackBlockMode.path)
+    val fontLetterSpacingUserData = userDataRepository.floatUserData(UserDataPath.Reader.FontLetterSpacing.path)
+    val paragraphSpacingUserData = userDataRepository.floatUserData(UserDataPath.Reader.ParagraphSpacing.path)
 
     val fontSize by fontSizeUserData.safeAsState(15f)
     val fontLineHeight by fontLineHeightUserData.safeAsState(7f)
@@ -89,4 +91,6 @@ class SettingState(
     val lightThemeName by lightThemeNameUserData.safeAsState("light_default")
     val darkThemeName by darkThemeNameUserData.safeAsState("dark_default")
     val backBlockMode by backBlockModeUserData.safeAsState("none")
+    val fontLetterSpacing by fontLetterSpacingUserData.safeAsState(0f)
+    val paragraphSpacing by paragraphSpacingUserData.safeAsState(0f)
 }

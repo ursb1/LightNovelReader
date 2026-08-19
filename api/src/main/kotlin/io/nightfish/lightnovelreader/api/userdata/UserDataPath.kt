@@ -44,6 +44,10 @@ sealed class UserDataPath(
         data object FontLineHeight : UserDataPath("fontLineHeight", Reader)
         /** 阅读字体粗细 @since Api 2 */
         data object FontWeigh : UserDataPath("fontWeigh", Reader)
+        /** 阅读字间距 @since Api 5 */
+        data object FontLetterSpacing : UserDataPath("fontLetterSpacing", Reader)
+        /** 阅读段落间距 @since Api 5 */
+        data object ParagraphSpacing : UserDataPath("paragraphSpacing", Reader)
         /** 保持屏幕常亮 @since Api 2 */
         data object KeepScreenOn : UserDataPath("keepScreenOn", Reader)
         /** 启用隐藏状态栏 @since Api 2 */

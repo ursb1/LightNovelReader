@@ -534,6 +534,26 @@ fun ReaderTextSettings(settingState: SettingState, context: Context, onClickChan
             value = settingState.fontLineHeight,
             floatUserData = settingState.fontLineHeightUserData
         )
+
+        SettingsSliderEntry(
+            modifier = Modifier.background(colorScheme.surfaceContainer),
+            painter = painterResource(R.drawable.format_letter_spacing_24px),
+            title = stringResource(R.string.settings_reader_letter_spacing),
+            unit = "em",
+            valueRange = -0.5f..0.5f,
+            value = settingState.fontLetterSpacing,
+            floatUserData = settingState.fontLetterSpacingUserData
+        )
+
+        SettingsSliderEntry(
+            modifier = Modifier.background(colorScheme.surfaceContainer),
+            painter = painterResource(R.drawable.format_paragraph_spacing_24px),
+            title = stringResource(R.string.settings_reader_paragraph_spacing),
+            unit = "dp",
+            valueRange = 0f..20f,
+            value = settingState.paragraphSpacing,
+            floatUserData = settingState.paragraphSpacingUserData
+        )
     }
 }
 

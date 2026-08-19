@@ -336,6 +336,7 @@ private fun TextContent(
                         textAlign = TextAlign.Center,
                         fontSize = (settingState.fontSize + 6).sp,
                         lineHeight = (settingState.fontSize + settingState.fontLineHeight + 6).sp,
+                        letterSpacing = settingState.fontLetterSpacing.sp,
                         fontWeight = FontWeight((settingState.fontWeigh.toInt() + 100)),
                         fontFamily = fontFamily,
                         color = textColor
@@ -349,6 +350,7 @@ private fun TextContent(
                         textAlign = TextAlign.Center,
                         fontSize = (settingState.fontSize + 6).sp,
                         lineHeight = (settingState.fontSize + settingState.fontLineHeight + 6).sp,
+                        letterSpacing = settingState.fontLetterSpacing.sp,
                         fontWeight = FontWeight((settingState.fontWeigh.toInt() + 100)),
                         fontFamily = fontFamily,
                         color = textColor
