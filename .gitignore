@@ -1,95 +1,47 @@
-```
-# Dependencies
-node_modules/
+```yaml
+name: Build APK
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
-# Environment
-.env
-.env.local
-.env.*
-
-# Editors
-.vscode/
-
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-
-# Build artifacts
-dist/
-build/
-target/
-*.pyc
-__pycache__/
-*.class
-*.o
-*.obj
-*.exe
-*.dll
-*.so
-*.a
-*.out
-
-# Python
-*.pyc
-__pycache__/
-*.pyo
-*.pyd
-.Python
-env/
-venv/
-.venv/
-.ENV
-.python-version
-*.pot
-*.pot.*
-*.mo
-*.mo.*
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.log
-.git/modules/
-*.bin
-*.dex
-*.so
-*.dylib
-*.dll
-*.class
-*.jar
-*.war
-*.ear
-*.har
-*.gem
-*.egg
-*.nupkg
-*.whl
-*.zip
-*.tar
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.gz
-*.bz2
-*.xz
-*.7z
-*.rar
-*.zst
-*.lz4
-*.lzh
-*.cab
-*.arj
-*.rpm
-*.deb
-*.Z
-*.lz
-*.lzo
-.DS_Store
-Thumbs.db
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install buildozer cython
+    
+    - name: Set up Buildozer
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential git python3 python3-dev
+        sudo apt-get install -y libffi-dev python3-pip
+        sudo apt-get install -y openjdk-8-jdk
+        echo "JAVA_HOME=/usr/lib/jvm/java-8-openjdk-amd64" >> $GITHUB_ENV
+    
+    - name: Initialize Buildozer
+      run: |
+        buildozer init
+    
+    - name: Build APK
+      run: |
+        buildozer android debug
+    
+    - name: Upload APK
+      uses: actions/upload-artifact@v3
+      with:
+        name: apk-file
+        path: bin/*.apk
 ```
